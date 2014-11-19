@@ -61,6 +61,9 @@ public class Main {
 			DisplayTeams();
 		
 		}
+		else if (userMove.equals("start competition") || userMove.equals("sc")){
+			//runs method to start comp
+		}
 		else if (userMove.equals("help") || userMove.equals("h"))	{
 			DisplayHelp();
 		}
@@ -72,8 +75,7 @@ public class Main {
 				System.out.println("Play well!");
 			}
 		}
-			
-	
+		
 	}
 
 	public static void EventManager(){
@@ -98,6 +100,30 @@ public class Main {
 	public static void EndProgram(){
 		System.exit(0);
 	}
-
+	
+	public static void StartAComptetition(){
+		CompetitionManager CM = new CompetitionManager();
+		System.out.println("Enter 2 teams and the event!");
+		String tempString = getInput();
+		String[] stringArray = tempString.split(",");
+		
+		int event = Integer.parseInt(stringArray[0]);
+		int team1 = Integer.parseInt(stringArray[1]);
+		int team2 = Integer.parseInt(stringArray[2]);
+		
+		CM.StartCompetition(CM.eventList.getNode(event).getEvents(), CM.teamList.getNode(team1).getTeam(), CM.teamList.getNode(team2).getTeam());
+			
+	}
+	
+	public static String getInput(){
+		String userChoice = null;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		try{
+			userChoice = br.readLine();
+		}catch(IOException ioe){
+			System.out.println("error in your input");
+		}
+		return userChoice;
+	}
 
 }

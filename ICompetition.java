@@ -1,7 +1,10 @@
 
 public interface ICompetition {
-	Event event1;
-	Team team1;
-	Team team2;
-
+	Events getevent1();
+	Team getteam1();
+	Team getteam2();
+	
+	void setEvents(Events myEvent);
+	void setTeam1(Team myTeam1);
+	void setTeam2(Team myTeam2);
 }
