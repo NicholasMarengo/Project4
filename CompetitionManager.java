@@ -20,12 +20,16 @@ public class CompetitionManager {
 	public Linkedlist teamList = new Linkedlist();
 
 	public ICompetition[] GetCompetitions(){
+		return null;
 		//traverse list and build array
 	}
 	
+
+	
+	
 	public void EndCompetition(Competition competition, Team winningTeam){
-		//remove method here
-		
+		compList.add(competition);
+		teamList.add(winningTeam);
 	}
 
 	

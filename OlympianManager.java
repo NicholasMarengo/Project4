@@ -9,13 +9,14 @@ public class OlympianManager {
 		private Olympian[] olympianArray = new Olympian[15];
 		private String olys;
 		
-		public OlympianManager() {
+		public OlympianManager(String filePath) {
+			olympianArray = new Olympian[olympians];
 			for(int i = 0; i< olympianArray.length; i++){
 				olympianArray[i] = new Olympian();
 			}
 			try {
 				
-				BufferedReader inputStream = new BufferedReader(new FileReader("C:\\lgoo.txt"));
+				BufferedReader inputStream = new BufferedReader(new FileReader(filePath));
 				
 				String line2;
 				Boolean firstLine = false;
@@ -23,12 +24,13 @@ public class OlympianManager {
 				
 				while((line2 = inputStream.readLine()) != null) {
 						if(firstLine == true) {
-						List<String> fileList = Arrays.asList(line2.split(","));
+							List<String> fileList = Arrays.asList(line2.split(","));
 						
 						int age = Integer.parseInt(fileList.get(2).replaceAll("\\s", ""));
 						
-						String cleansed = fileList.get(1).replaceAll("\\s", "");
-						if(cleansed.equals("M")){
+							String cleansed = fileList.get(1).replaceAll("\\s", "");
+						
+							if(cleansed.equals("M")){
 							olympianArray[current].setInfo(fileList.get(0), Sex.M, age);
 						}else {
 							olympianArray[current].setInfo(fileList.get(0), Sex.M, age);
@@ -43,7 +45,10 @@ public class OlympianManager {
 			}catch (Exception e) {
 				
 			}		
-		}			
+		}	
+		
+		
+		
 			
 		/*	
 			Olympian[] olympians = new Olympian[16];
@@ -75,10 +80,4 @@ public class OlympianManager {
 				}
 			}
 }			
-			
-			
-			
-			
-			
-			
 			

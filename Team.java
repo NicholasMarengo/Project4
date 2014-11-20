@@ -5,6 +5,7 @@ public class Team {
 	int wins;
 	int losses;
 	
+	
 			public Team() {
 				
 				this.olympian1 = new Olympian();

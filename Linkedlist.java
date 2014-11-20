@@ -70,6 +70,10 @@ public class Linkedlist {
 		}
 		return null;
 	}
+
+	public void add(Team winningTeam) {
+		// TODO Auto-generated method stub
+	}
 	
 	
 }

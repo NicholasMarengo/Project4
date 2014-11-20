@@ -9,7 +9,23 @@ public class TeamManager {
 		private int current = 0;
 		
 		
-		public TeamManager() {
+		public TeamManager(OlympianManager OM){
+			for(int i = 0; i < teamArray.length; i = i + 2){
+				teamArray[i] = new Team();
+			}
+			
+			
+			managerArray = OM.getObjectOlympians();
+			teamSize = managerArray.length / 2;
+			
+			int totalTeamSize = managerArray.length;
+			
+			
+		}
+		
+		
+		
+	/**	public TeamManager() {
 			
 			for(int i = 0; i < teamArray.length; i++) {
 				teamArray[i] = new Team();
@@ -40,26 +56,21 @@ public class TeamManager {
 					else{
 						managerArray[random1] = null;
 						managerArray[random2] = null;
-						totalTeamSize = totalTeamSize - 2;
-						
-						
-					}{
-						
-					}
-						
+						totalTeamSize = totalTeamSize - 2;	
+					}{	
+					}		
 				}
-			
 			}	
-		}
+		} */
 		
 	public Team[] getTeamArray(){
 		return this.teamArray;
 	}
 	
 	public void printTeams(){
-		System.out.println(for(int i = 0; i < teamArray[i].length; i++;) {
+		System.out.println(for(int i = 0; i < teamArray[i].length; i++;)) {
 					System.out.println(teamArray[i].getInfo());
 	}
 				
-}
+	}
 }

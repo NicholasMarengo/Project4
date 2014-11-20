@@ -3,10 +3,13 @@ import java.io.*;
 
 
 public class Main {
+	
+	 private static OlympianManager OMR;
 		
 	public static void main(String[] args) {
 		
 		try {
+			
 			BufferedReader br = new BufferedReader (new FileReader (args[0]));
 			
 			String line;
@@ -30,6 +33,10 @@ public class Main {
 		}
 				System.out.println(" Welcome to the Lawn Game Olympics!");	
 				System.out.println("Please enter a command!");
+		
+				
+		OMR = new OlympianManager(args[0]);		
+		
 				
 		String userMove;
 		BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
@@ -76,54 +83,59 @@ public class Main {
 			}
 		}
 		
-	}
-
-	public static void EventManager(){
-		EventManager event = new EventManager();
-		event.printEvents();
-	}
-	
-	public static void OlympianManager(){
-		OlympianManager oly = new OlympianManager();
-		oly.printOlympians();
-	}
-
-	public static void DisplayHelp(){
-		System.out.println("Here is some help!");
-	}
-	
-	public static void DisplayTeams(){
-		TeamManager Team = new TeamManager();
-		Team.printTeams();
-	}
-	
-	public static void EndProgram(){
-		System.exit(0);
-	}
-	
-	public static void StartAComptetition(){
-		CompetitionManager CM = new CompetitionManager();
-		System.out.println("Enter 2 teams and the event!");
-		String tempString = getInput();
-		String[] stringArray = tempString.split(",");
-		
-		int event = Integer.parseInt(stringArray[0]);
-		int team1 = Integer.parseInt(stringArray[1]);
-		int team2 = Integer.parseInt(stringArray[2]);
-		
-		CM.StartCompetition(CM.eventList.getNode(event).getEvents(), CM.teamList.getNode(team1).getTeam(), CM.teamList.getNode(team2).getTeam());
-			
-	}
-	
-	public static String getInput(){
-		String userChoice = null;
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		try{
-			userChoice = br.readLine();
-		}catch(IOException ioe){
-			System.out.println("error in your input");
 		}
-		return userChoice;
-	}
 
+		public static void EventManager(){
+			EventManager event = new EventManager();
+			event.printEvents();
+	
+		}
+	
+		public static void OlympianManager(){
+			OlympianManager oly = new OlympianManager();
+			oly.printOlympians();
+		
+		}
+
+		public static void DisplayHelp(){
+			System.out.println("Here is some help!");
+		}
+	
+		public static void DisplayTeams(){
+			TeamManager Team = new TeamManager(OMR);
+			Team.printTeams();
+		}
+	
+		public static void EndProgram(){
+			System.exit(0);
+		}
+	
+		public static void StartAComptetition(){
+		
+			CompetitionManager CM = new CompetitionManager();
+				System.out.println("Enter 2 teams and the event!");
+				String temp = getInput();
+				String[] stringArray = temp.split(",");
+		
+				int event = Integer.parseInt(stringArray[0]);
+				int team1 = Integer.parseInt(stringArray[1]);
+				int team2 = Integer.parseInt(stringArray[2]);
+		
+				CM.StartCompetition(CM.eventList.getNode(event).getEvents(), CM.teamList.getNode(team1).getTeam(), CM.teamList.getNode(team2).getTeam());
+				
+		}
+	
+		public static String getInput(){
+		
+			String input = null;
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		try{
+			input = br.readLine();
+		}catch(IOException ioe){
+			System.out.println("please use valid input");
+		}
+		
+		return input;
+	}
 }

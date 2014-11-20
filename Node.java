@@ -4,12 +4,17 @@ public class Node {
 	public Competition value;
 	private Events event;
 	private Team team;
+	
 	public Node(){
 		
 	}
 	
 	public void setNextNode(Node nextNode){
 		next = nextNode;
+	}
+	
+	public void setCompetition(Competition comp){
+		value = comp;
 	}
 	
 	public Node(Competition data){
